@@ -2,7 +2,7 @@
 
 A responsive, single-page website for a fictional local café. The goal is to get nearby customers to view the menu and reserve a table.
 
-**Live site:** https://github.com/BilalMughal22/BeanBloomCafe/
+**Live site:** https://bilalmughal22.github.io/BeanBloomCafe/
 
 <p>
   <img src="screenshots/mobile1.png" alt="Mobile view" width="250">
