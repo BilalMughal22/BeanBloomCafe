@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bean &amp; Bloom Café | Fresh coffee. Slow mornings.</title>
+<meta name="description" content="Small-batch coffee and homemade pastries, every day. View the menu and reserve a table at Bean & Bloom Café.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#FAF5EE;--brown:#3B2A20;--terra:#C8643B;--terra-dark:#a84f2c;--sand:#F0E6D8;--muted:#6b574a;--radius:14px;--max:1120px}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--cream);color:var(--brown);font:400 1rem/1.65 Inter,system-ui,sans-serif}
+h1,h2,h3{font-family:'Playfair Display',Georgia,serif;line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.6rem,7vw,4.8rem);font-weight:700}
+h2{font-size:clamp(1.9rem,4vw,2.6rem)}
+h3{font-size:1.2rem}
+p{margin:0 0 1em}
+a{color:inherit}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 1.25rem}
+section{padding:5rem 0}
+.lead{color:var(--muted);max-width:52ch}
+.btn{display:inline-block;padding:.8rem 1.5rem;border-radius:999px;border:2px solid var(--terra);background:var(--terra);color:#fff;font:600 1rem Inter,sans-serif;text-decoration:none;cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:var(--terra-dark);border-color:var(--terra-dark)}
+.btn.ghost{background:transparent;color:var(--brown);border-color:var(--brown)}
+.btn.ghost:hover{background:var(--brown);color:var(--cream)}
+.btn.sm{padding:.5rem 1.1rem;font-size:.92rem}
+.ph{background:linear-gradient(135deg,#e3cdb4,#c9a27c);overflow:hidden}
+.ph img{width:100%;height:100%;object-fit:cover}
+
+/* nav */
+header{position:sticky;top:0;z-index:50;background:rgba(250,245,238,.94);backdrop-filter:blur(8px);border-bottom:1px solid #e8dccb}
+nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:700 1.35rem 'Playfair Display',serif;text-decoration:none}
+.logo span{color:var(--terra)}
+.links{display:flex;align-items:center;gap:1.75rem;list-style:none;margin:0;padding:0}
+.links a{text-decoration:none;font-weight:500}
+.links a:not(.btn):hover{color:var(--terra)}
+.burger{display:none;background:none;border:0;padding:.5rem;cursor:pointer}
+.burger span{display:block;width:24px;height:2px;background:var(--brown);margin:5px 0;transition:transform .25s,opacity .25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* hero */
+.hero{padding:0}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;min-height:calc(100vh - 68px);padding-top:3rem;padding-bottom:3rem}
+.hero p{font-size:1.2rem;color:var(--muted);max-width:34ch}
+.cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.75rem}
+.hero-img{aspect-ratio:4/5;border-radius:220px 220px var(--radius) var(--radius)}
+
+/* about */
+.about{background:var(--sand)}
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+.points div{border-top:3px solid var(--terra);padding-top:1rem}
+.points p{color:var(--muted);margin:0}
+
+/* menu */
+.filters{display:flex;flex-wrap:wrap;gap:.6rem;margin:1.5rem 0 2rem}
+.filters button{padding:.5rem 1.2rem;border-radius:999px;border:1.5px solid var(--brown);background:transparent;color:var(--brown);font:500 .95rem Inter,sans-serif;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--brown);color:var(--cream)}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.25rem}
+.item{background:#fff;border-radius:var(--radius);padding:1.4rem;border:1px solid #eadfce}
+.item[hidden]{display:none}
+.item .row{display:flex;justify-content:space-between;gap:1rem;align-items:baseline}
+.price{color:var(--terra);font-weight:600}
+.item p{color:var(--muted);font-size:.95rem;margin:0}
+
+/* gallery */
+.gallery{background:var(--sand)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:.8rem;margin-top:2rem}
+.grid figure{margin:0;border-radius:var(--radius)}
+.grid .tall{grid-row:span 2}
+.grid .wide{grid-column:span 2}
+
+/* testimonials */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+blockquote{margin:0;font:500 1.15rem/1.5 'Playfair Display',serif}
+blockquote footer{font:500 .9rem Inter,sans-serif;color:var(--terra);margin-top:.8rem}
+
+/* visit */
+.visit{background:var(--brown);color:var(--cream)}
+.visit .cols{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.visit dl{display:grid;grid-template-columns:auto 1fr;gap:.4rem 1.5rem;margin:1rem 0 1.5rem}
+.visit dt{font-weight:600}.visit dd{margin:0}
+.visit a{color:#f1b797}
+.map{border-radius:var(--radius);overflow:hidden;background:#e9dcc8}
+.map svg{display:block;width:100%;height:auto}
+
+/* form */
+form{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;max-width:720px;margin-top:2rem}
+.field{display:flex;flex-direction:column;gap:.35rem}
+.field.full{grid-column:1/-1}
+label{font-weight:500;font-size:.95rem}
+input,select,textarea{font:inherit;color:var(--brown);padding:.75rem .9rem;border:1.5px solid #cdbba6;border-radius:10px;background:#fff;width:100%}
+textarea{min-height:110px;resize:vertical}
+.field.invalid input,.field.invalid select{border-color:#b3261e}
+.err{color:#b3261e;font-size:.85rem;min-height:1.1em}
+.success{display:none;max-width:720px;margin-top:2rem;padding:1.4rem;border-radius:var(--radius);background:#e7f1e2;border:1px solid #b9d3ae}
+.success.show{display:block}
+
+/* footer */
+footer.site{background:#2a1d15;color:#d9cbb9;padding:3rem 0 2rem}
+footer.site .cols{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem}
+footer.site a{text-decoration:none}
+.social{display:flex;gap:.8rem;margin-top:.8rem}
+.social a{width:40px;height:40px;border:1.5px solid #6b574a;border-radius:50%;display:grid;place-items:center}
+.social a:hover{background:var(--terra);border-color:var(--terra)}
+.social svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8}
+.copy{margin-top:2rem;font-size:.85rem;color:#a89786}
+
+/* reveal: only the hero-independent sections, gentle */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}}
+
+/* tablet */
+@media (max-width:900px){
+ .hero .wrap{grid-template-columns:1fr;min-height:0}
+ .hero-img{aspect-ratio:4/3;border-radius:var(--radius);order:-1}
+ .points,.quotes{grid-template-columns:1fr}
+ .grid{grid-template-columns:repeat(2,1fr)}
+ .visit .cols{grid-template-columns:1fr}
+}
+/* phone */
+@media (max-width:760px){
+ section{padding:3.5rem 0}
+ .burger{display:block}
+ .links{position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--cream);border-bottom:1px solid #e8dccb;padding:.5rem 1.25rem 1.25rem;display:none}
+ .links.open{display:flex}
+ .links li{padding:.6rem 0}
+ .links .btn{text-align:center}
+ form{grid-template-columns:1fr}
+ .grid{grid-auto-rows:140px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <nav class="wrap" aria-label="Main">
+  <a class="logo" href="#top">Bean <span>&amp;</span> Bloom</a>
+  <button class="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
+  <ul class="links" id="nav-links">
+   <li><a href="#menu">Menu</a></li>
+   <li><a href="#about">About</a></li>
+   <li><a href="#gallery">Gallery</a></li>
+   <li><a href="#visit">Contact</a></li>
+   <li><a class="btn sm" href="#reserve">Reserve a table</a></li>
+  </ul>
+ </nav>
+</header>
+
+<main id="top">
+ <section class="hero">
+  <div class="wrap">
+   <div>
+    <h1>Fresh coffee. Slow mornings.</h1>
+    <p>Small-batch coffee and homemade pastries, every day.</p>
+    <div class="cta">
+     <a class="btn" href="#reserve">Reserve a table</a>
+     <a class="btn ghost" href="#menu">See the menu</a>
+    </div>
+   </div>
+   <figure class="hero-img ph" style="margin:0">
+    <!-- Replace with images/hero.webp (about 900px wide, under 120 KB) -->
+    <img src="images/hero.webp" width="900" height="1125" alt="A flat white with latte art on a wooden café table" fetchpriority="high" onerror="this.remove()">
+   </figure>
+  </div>
+ </section>
+
+ <section class="about reveal" id="about">
+  <div class="wrap">
+   <h2>A small café with big care</h2>
+   <p class="lead">Everything here is made in-house by neighbours, for neighbours.</p>
+   <div class="points">
+    <div><h3>Locally roasted beans</h3><p>We buy from a roaster ten minutes away, so every cup is fresh and the money stays in town.</p></div>
+    <div><h3>Baked fresh daily</h3><p>Croissants, cookies and loaves come out of our oven before we open the doors.</p></div>
+    <div><h3>A cozy space</h3><p>Soft light, warm wood and plenty of plugs. Stay for a chat or an entire afternoon.</p></div>
+   </div>
+  </div>
+ </section>
+
+ <section class="reveal" id="menu">
+  <div class="wrap">
+   <h2>Menu highlights</h2>
+   <div class="filters" role="group" aria-label="Filter menu by category">
+    <button type="button" data-filter="all" aria-pressed="true">All</button>
+    <button type="button" data-filter="coffee" aria-pressed="false">Coffee</button>
+    <button type="button" data-filter="pastries" aria-pressed="false">Pastries</button>
+    <button type="button" data-filter="brunch" aria-pressed="false">Brunch</button>
+   </div>
+   <div class="items">
+    <article class="item" data-cat="coffee"><div class="row"><h3>Flat white</h3><span class="price">$4.50</span></div><p>Double ristretto with silky steamed milk.</p></article>
+    <article class="item" data-cat="coffee"><div class="row"><h3>Honey oat latte</h3><span class="price">$5.25</span></div><p>Espresso, oat milk and a spoon of local honey.</p></article>
+    <article class="item" data-cat="coffee"><div class="row"><h3>Cold brew</h3><span class="price">$4.75</span></div><p>Steeped for 18 hours and served over ice.</p></article>
+    <article class="item" data-cat="pastries"><div class="row"><h3>Butter croissant</h3><span class="price">$3.75</span></div><p>Flaky, golden and baked every morning.</p></article>
+    <article class="item" data-cat="pastries"><div class="row"><h3>Cardamom bun</h3><span class="price">$4.25</span></div><p>Soft dough, cardamom sugar, pearl-sugar top.</p></article>
+    <article class="item" data-cat="pastries"><div class="row"><h3>Brown butter cookie</h3><span class="price">$3.25</span></div><p>Chewy, with dark chocolate and sea salt.</p></article>
+    <article class="item" data-cat="brunch"><div class="row"><h3>Avocado toast</h3><span class="price">$11.50</span></div><p>Sourdough, smashed avocado, chili flakes, poached egg.</p></article>
+    <article class="item" data-cat="brunch"><div class="row"><h3>Ricotta pancakes</h3><span class="price">$12.00</span></div><p>Three fluffy stacks with berries and maple syrup.</p></article>
+    <article class="item" data-cat="brunch"><div class="row"><h3>Garden omelette</h3><span class="price">$12.50</span></div><p>Three eggs, herbs, goat cheese and a side salad.</p></article>
+   </div>
+  </div>
+ </section>
+
+ <section class="gallery reveal" id="gallery">
+  <div class="wrap">
+   <h2>Inside Bean &amp; Bloom</h2>
+   <div class="grid">
+    <!-- Replace each with images/gallery-N.webp (about 600px wide, under 80 KB) -->
+    <figure class="ph tall"><img src="images/gallery-tall-1.webp" loading="lazy" alt="Barista pouring latte art" onerror="this.remove()"></figure>
+    <figure class="ph"><img src="images/gallery-2.webp" loading="lazy" alt="Tray of fresh croissants" onerror="this.remove()"></figure>
+    <figure class="ph wide"><img src="images/gallery-wide-2.webp" loading="lazy" alt="Sunlit café interior with wooden tables" onerror="this.remove()"></figure>
+    <figure class="ph"><img src="images/gallery-4.webp" loading="lazy" alt="Cup of coffee beside a book" onerror="this.remove()"></figure>
+    <figure class="ph wide"><img src="images/gallery-wide-5.webp" loading="lazy" alt="Brunch plate with eggs and toast" onerror="this.remove()"></figure>
+    <figure class="ph"><img src="images/gallery-6.webp" loading="lazy" alt="Fresh flowers on the counter" onerror="this.remove()"></figure>
+   </div>
+  </div>
+ </section>
+
+ <section class="reveal" id="testimonials">
+  <div class="wrap">
+   <h2>Kind words from regulars</h2>
+   <div class="quotes">
+    <blockquote>"The best flat white in town, and the croissants are gone by ten."<footer>Maya R.</footer></blockquote>
+    <blockquote>"My Saturday ritual. Warm, unhurried, and the staff remember your order."<footer>Daniel K.</footer></blockquote>
+    <blockquote>"Lovely place to work for a few hours. Great coffee, even better cardamom buns."<footer>Priya S.</footer></blockquote>
+   </div>
+  </div>
+ </section>
+
+ <section class="visit reveal" id="visit">
+  <div class="wrap cols">
+   <div>
+    <h2>Come say hello</h2>
+    <dl>
+     <dt>Mon to Fri</dt><dd>7:30 am to 5:00 pm</dd>
+     <dt>Saturday</dt><dd>8:00 am to 6:00 pm</dd>
+     <dt>Sunday</dt><dd>8:00 am to 3:00 pm</dd>
+    </dl>
+    <address style="font-style:normal">12 Orchard Lane, Old Town<br>Phone: <a href="tel:+15550123456">(555) 012-3456</a></address>
+   </div>
+   <div class="map">
+    <img src="images/map.webp" alt="Map showing Bean & Bloom Café at 12 Orchard Lane" loading="lazy">
+   </div>
+  </div>
+ </section>
+
+ <section class="reveal" id="reserve">
+  <div class="wrap">
+   <h2>Reserve a table</h2>
+   <p class="lead">Tell us when you're coming and we'll save you a seat.</p>
+   <form id="rform" novalidate>
+    <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required><span class="err" aria-live="polite"></span></div>
+    <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required><span class="err" aria-live="polite"></span></div>
+    <div class="field"><label for="date">Date</label><input id="date" name="date" type="date" required><span class="err" aria-live="polite"></span></div>
+    <div class="field"><label for="guests">Guests</label>
+     <select id="guests" name="guests" required><option value="">Choose</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option></select><span class="err" aria-live="polite"></span></div>
+    <div class="field full"><label for="note">Note (optional)</label><textarea id="note" name="note" placeholder="Allergies, celebrations, high chair..."></textarea></div>
+    <div class="field full"><button class="btn" type="submit" style="justify-self:start">Reserve a table</button></div>
+   </form>
+   <div class="success" id="ok" role="status" tabindex="-1"></div>
+  </div>
+ </section>
+</main>
+
+<footer class="site">
+ <div class="wrap">
+  <div class="cols">
+   <div>
+    <strong style="font-family:'Playfair Display',serif;font-size:1.2rem;color:#FAF5EE">Bean &amp; Bloom Café</strong>
+    <div class="social">
+     <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg></a>
+     <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/></svg></a>
+     <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+    </div>
+   </div>
+   <div>12 Orchard Lane, Old Town<br><a href="tel:+15550123456">(555) 012-3456</a><br><a href="mailto:hello@beanandbloom.example">hello@beanandbloom.example</a></div>
+  </div>
+  <p class="copy">&copy; <span id="yr">2026</span> Bean &amp; Bloom Café. All rights reserved.</p>
+ </div>
+</footer>
+
+<script>
+// Mobile menu
+const burger=document.querySelector('.burger'),links=document.getElementById('nav-links');
+const setMenu=o=>{links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o)};
+burger.addEventListener('click',()=>setMenu(!links.classList.contains('open')));
+links.addEventListener('click',e=>{if(e.target.closest('a'))setMenu(false)});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+
+// Menu filter
+const fbtns=document.querySelectorAll('.filters button'),cards=document.querySelectorAll('.item');
+fbtns.forEach(b=>b.addEventListener('click',()=>{
+  fbtns.forEach(x=>x.setAttribute('aria-pressed',x===b));
+  cards.forEach(c=>c.hidden=!(b.dataset.filter==='all'||c.dataset.cat===b.dataset.filter));
+}));
+
+// Scroll reveal
+const rev=document.querySelectorAll('.reveal');
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+  rev.forEach(r=>io.observe(r));
+}else rev.forEach(r=>r.classList.add('in'));
+
+// Form validation
+const form=document.getElementById('rform'),ok=document.getElementById('ok'),dateEl=document.getElementById('date');
+dateEl.min=new Date().toISOString().split('T')[0];
+document.getElementById('yr').textContent=new Date().getFullYear();
+const rules={
+  name:v=>v.trim().length<2?'Enter your name (at least 2 characters).':'',
+  email:v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)?'':'Enter a valid email, like name@example.com.',
+  date:v=>!v?'Choose a date.':(v<dateEl.min?'Choose today or a future date.':''),
+  guests:v=>v?'':'Select the number of guests.'
+};
+const check=el=>{const msg=rules[el.name](el.value),f=el.closest('.field');
+  f.classList.toggle('invalid',!!msg);f.querySelector('.err').textContent=msg;el.setAttribute('aria-invalid',!!msg);return !msg};
+Object.keys(rules).forEach(n=>{const el=form.elements[n];el.addEventListener('blur',()=>check(el));el.addEventListener('input',()=>el.closest('.field').classList.contains('invalid')&&check(el))});
+form.addEventListener('submit',e=>{
+  e.preventDefault();
+  const bad=Object.keys(rules).map(n=>form.elements[n]).filter(el=>!check(el));
+  if(bad.length){bad[0].focus();return}
+  const d=new Date(dateEl.value+'T00:00').toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+  ok.textContent=`Thanks, ${form.elements.name.value.trim()}! We've saved a table for ${form.elements.guests.value} on ${d}. A confirmation is on its way to ${form.elements.email.value.trim()}.`;
+  ok.classList.add('show');form.reset();ok.focus();
+});
+</script>
+</body>
+</html>
