@@ -77,8 +77,8 @@ Lighthouse and some browser features need the page served over HTTP, so avoid op
 
 ## Credits
 
-- Photos: [Unsplash](https://unsplash.com) / [Pexels](https://pexels.com). Add photographer names here, for example "Hero photo by Name on Unsplash".
-- Map: © OpenStreetMap contributors (if you use an OpenStreetMap screenshot)
+- Photos: [Unsplash](https://unsplash.com) / [Pexels](https://pexels.com). 
+- Map: © OpenStreetMap contributors 
 - Café name, address, menu and testimonials are fictional placeholders.
 
 ## License
